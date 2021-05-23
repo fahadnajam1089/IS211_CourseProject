@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <table width="600px" border="1">
+        <tr>
+	    <td width="200px" align="center"><b>Book code</b></td>
+            <td width="200px" align="center"><b>Author</b></td>
+            <td width="200px" align="center"><b>Title</b></td>
+            <td width="200px" align="center"><b>Number of pages</b></td>
+            <td width="200px" align="center"><b>Rating</b></td>
+	    <td width="200px" align="center"><b>Add</b></td>
+        </tr>
+
+        {% for item in info %}
+        <tr>
+            <td width="200px" align="center">{{item[0]}}</td>
+            <td width="200px" align="center">{{item[1]}}</td>
+            <td width="200px" align="center">{{item[2]}}</td>
+            <td width="200px" align="center">{{item[3]}}</td>
+	    <td width="200px" align="center">{{item[4]}}</td>
+	    <td>
+	    <form action="{{ url_for('add') }}" method="POST">
+    		<input type="hidden" id={{item[0]}} name={{item[0]}} required>
+   		<button type="submit"> add</button>
+	   </form> 
+	   </td>  
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="/search">
+        <td rowspan="2"><input type="submit" value="Search Books"></td>
+    </form>
+
+</body>
+</html>
